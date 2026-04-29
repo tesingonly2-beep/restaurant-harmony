@@ -9,38 +9,366 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SuperAdminRouteImport } from './routes/super-admin'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SuperAdminIndexRouteImport } from './routes/super-admin.index'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as SuperAdminUsersRouteImport } from './routes/super-admin.users'
+import { Route as SuperAdminSupportRouteImport } from './routes/super-admin.support'
+import { Route as SuperAdminSettingsRouteImport } from './routes/super-admin.settings'
+import { Route as SuperAdminSecurityRouteImport } from './routes/super-admin.security'
+import { Route as SuperAdminRevenueRouteImport } from './routes/super-admin.revenue'
+import { Route as SuperAdminRestaurantsRouteImport } from './routes/super-admin.restaurants'
+import { Route as SuperAdminReportsRouteImport } from './routes/super-admin.reports'
+import { Route as SuperAdminMarketingRouteImport } from './routes/super-admin.marketing'
+import { Route as SuperAdminBranchesRouteImport } from './routes/super-admin.branches'
+import { Route as SuperAdminBillingRouteImport } from './routes/super-admin.billing'
+import { Route as AdminTablesRouteImport } from './routes/admin.tables'
+import { Route as AdminStaffRouteImport } from './routes/admin.staff'
+import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as AdminReportsRouteImport } from './routes/admin.reports'
+import { Route as AdminPosRouteImport } from './routes/admin.pos'
+import { Route as AdminOrdersRouteImport } from './routes/admin.orders'
+import { Route as AdminMenuRouteImport } from './routes/admin.menu'
+import { Route as AdminKitchenRouteImport } from './routes/admin.kitchen'
+import { Route as AdminInventoryRouteImport } from './routes/admin.inventory'
+import { Route as AdminFinanceRouteImport } from './routes/admin.finance'
+import { Route as AdminCustomersRouteImport } from './routes/admin.customers'
+import { Route as AdminBranchesRouteImport } from './routes/admin.branches'
 
+const SuperAdminRoute = SuperAdminRouteImport.update({
+  id: '/super-admin',
+  path: '/super-admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SuperAdminIndexRoute = SuperAdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SuperAdminRoute,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const SuperAdminUsersRoute = SuperAdminUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => SuperAdminRoute,
+} as any)
+const SuperAdminSupportRoute = SuperAdminSupportRouteImport.update({
+  id: '/support',
+  path: '/support',
+  getParentRoute: () => SuperAdminRoute,
+} as any)
+const SuperAdminSettingsRoute = SuperAdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => SuperAdminRoute,
+} as any)
+const SuperAdminSecurityRoute = SuperAdminSecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
+  getParentRoute: () => SuperAdminRoute,
+} as any)
+const SuperAdminRevenueRoute = SuperAdminRevenueRouteImport.update({
+  id: '/revenue',
+  path: '/revenue',
+  getParentRoute: () => SuperAdminRoute,
+} as any)
+const SuperAdminRestaurantsRoute = SuperAdminRestaurantsRouteImport.update({
+  id: '/restaurants',
+  path: '/restaurants',
+  getParentRoute: () => SuperAdminRoute,
+} as any)
+const SuperAdminReportsRoute = SuperAdminReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => SuperAdminRoute,
+} as any)
+const SuperAdminMarketingRoute = SuperAdminMarketingRouteImport.update({
+  id: '/marketing',
+  path: '/marketing',
+  getParentRoute: () => SuperAdminRoute,
+} as any)
+const SuperAdminBranchesRoute = SuperAdminBranchesRouteImport.update({
+  id: '/branches',
+  path: '/branches',
+  getParentRoute: () => SuperAdminRoute,
+} as any)
+const SuperAdminBillingRoute = SuperAdminBillingRouteImport.update({
+  id: '/billing',
+  path: '/billing',
+  getParentRoute: () => SuperAdminRoute,
+} as any)
+const AdminTablesRoute = AdminTablesRouteImport.update({
+  id: '/tables',
+  path: '/tables',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminStaffRoute = AdminStaffRouteImport.update({
+  id: '/staff',
+  path: '/staff',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminReportsRoute = AdminReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPosRoute = AdminPosRouteImport.update({
+  id: '/pos',
+  path: '/pos',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminOrdersRoute = AdminOrdersRouteImport.update({
+  id: '/orders',
+  path: '/orders',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMenuRoute = AdminMenuRouteImport.update({
+  id: '/menu',
+  path: '/menu',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminKitchenRoute = AdminKitchenRouteImport.update({
+  id: '/kitchen',
+  path: '/kitchen',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminInventoryRoute = AdminInventoryRouteImport.update({
+  id: '/inventory',
+  path: '/inventory',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminFinanceRoute = AdminFinanceRouteImport.update({
+  id: '/finance',
+  path: '/finance',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCustomersRoute = AdminCustomersRouteImport.update({
+  id: '/customers',
+  path: '/customers',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminBranchesRoute = AdminBranchesRouteImport.update({
+  id: '/branches',
+  path: '/branches',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/super-admin': typeof SuperAdminRouteWithChildren
+  '/admin/branches': typeof AdminBranchesRoute
+  '/admin/customers': typeof AdminCustomersRoute
+  '/admin/finance': typeof AdminFinanceRoute
+  '/admin/inventory': typeof AdminInventoryRoute
+  '/admin/kitchen': typeof AdminKitchenRoute
+  '/admin/menu': typeof AdminMenuRoute
+  '/admin/orders': typeof AdminOrdersRoute
+  '/admin/pos': typeof AdminPosRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/staff': typeof AdminStaffRoute
+  '/admin/tables': typeof AdminTablesRoute
+  '/super-admin/billing': typeof SuperAdminBillingRoute
+  '/super-admin/branches': typeof SuperAdminBranchesRoute
+  '/super-admin/marketing': typeof SuperAdminMarketingRoute
+  '/super-admin/reports': typeof SuperAdminReportsRoute
+  '/super-admin/restaurants': typeof SuperAdminRestaurantsRoute
+  '/super-admin/revenue': typeof SuperAdminRevenueRoute
+  '/super-admin/security': typeof SuperAdminSecurityRoute
+  '/super-admin/settings': typeof SuperAdminSettingsRoute
+  '/super-admin/support': typeof SuperAdminSupportRoute
+  '/super-admin/users': typeof SuperAdminUsersRoute
+  '/admin/': typeof AdminIndexRoute
+  '/super-admin/': typeof SuperAdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin/branches': typeof AdminBranchesRoute
+  '/admin/customers': typeof AdminCustomersRoute
+  '/admin/finance': typeof AdminFinanceRoute
+  '/admin/inventory': typeof AdminInventoryRoute
+  '/admin/kitchen': typeof AdminKitchenRoute
+  '/admin/menu': typeof AdminMenuRoute
+  '/admin/orders': typeof AdminOrdersRoute
+  '/admin/pos': typeof AdminPosRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/staff': typeof AdminStaffRoute
+  '/admin/tables': typeof AdminTablesRoute
+  '/super-admin/billing': typeof SuperAdminBillingRoute
+  '/super-admin/branches': typeof SuperAdminBranchesRoute
+  '/super-admin/marketing': typeof SuperAdminMarketingRoute
+  '/super-admin/reports': typeof SuperAdminReportsRoute
+  '/super-admin/restaurants': typeof SuperAdminRestaurantsRoute
+  '/super-admin/revenue': typeof SuperAdminRevenueRoute
+  '/super-admin/security': typeof SuperAdminSecurityRoute
+  '/super-admin/settings': typeof SuperAdminSettingsRoute
+  '/super-admin/support': typeof SuperAdminSupportRoute
+  '/super-admin/users': typeof SuperAdminUsersRoute
+  '/admin': typeof AdminIndexRoute
+  '/super-admin': typeof SuperAdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/super-admin': typeof SuperAdminRouteWithChildren
+  '/admin/branches': typeof AdminBranchesRoute
+  '/admin/customers': typeof AdminCustomersRoute
+  '/admin/finance': typeof AdminFinanceRoute
+  '/admin/inventory': typeof AdminInventoryRoute
+  '/admin/kitchen': typeof AdminKitchenRoute
+  '/admin/menu': typeof AdminMenuRoute
+  '/admin/orders': typeof AdminOrdersRoute
+  '/admin/pos': typeof AdminPosRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/staff': typeof AdminStaffRoute
+  '/admin/tables': typeof AdminTablesRoute
+  '/super-admin/billing': typeof SuperAdminBillingRoute
+  '/super-admin/branches': typeof SuperAdminBranchesRoute
+  '/super-admin/marketing': typeof SuperAdminMarketingRoute
+  '/super-admin/reports': typeof SuperAdminReportsRoute
+  '/super-admin/restaurants': typeof SuperAdminRestaurantsRoute
+  '/super-admin/revenue': typeof SuperAdminRevenueRoute
+  '/super-admin/security': typeof SuperAdminSecurityRoute
+  '/super-admin/settings': typeof SuperAdminSettingsRoute
+  '/super-admin/support': typeof SuperAdminSupportRoute
+  '/super-admin/users': typeof SuperAdminUsersRoute
+  '/admin/': typeof AdminIndexRoute
+  '/super-admin/': typeof SuperAdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/super-admin'
+    | '/admin/branches'
+    | '/admin/customers'
+    | '/admin/finance'
+    | '/admin/inventory'
+    | '/admin/kitchen'
+    | '/admin/menu'
+    | '/admin/orders'
+    | '/admin/pos'
+    | '/admin/reports'
+    | '/admin/settings'
+    | '/admin/staff'
+    | '/admin/tables'
+    | '/super-admin/billing'
+    | '/super-admin/branches'
+    | '/super-admin/marketing'
+    | '/super-admin/reports'
+    | '/super-admin/restaurants'
+    | '/super-admin/revenue'
+    | '/super-admin/security'
+    | '/super-admin/settings'
+    | '/super-admin/support'
+    | '/super-admin/users'
+    | '/admin/'
+    | '/super-admin/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/admin/branches'
+    | '/admin/customers'
+    | '/admin/finance'
+    | '/admin/inventory'
+    | '/admin/kitchen'
+    | '/admin/menu'
+    | '/admin/orders'
+    | '/admin/pos'
+    | '/admin/reports'
+    | '/admin/settings'
+    | '/admin/staff'
+    | '/admin/tables'
+    | '/super-admin/billing'
+    | '/super-admin/branches'
+    | '/super-admin/marketing'
+    | '/super-admin/reports'
+    | '/super-admin/restaurants'
+    | '/super-admin/revenue'
+    | '/super-admin/security'
+    | '/super-admin/settings'
+    | '/super-admin/support'
+    | '/super-admin/users'
+    | '/admin'
+    | '/super-admin'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/super-admin'
+    | '/admin/branches'
+    | '/admin/customers'
+    | '/admin/finance'
+    | '/admin/inventory'
+    | '/admin/kitchen'
+    | '/admin/menu'
+    | '/admin/orders'
+    | '/admin/pos'
+    | '/admin/reports'
+    | '/admin/settings'
+    | '/admin/staff'
+    | '/admin/tables'
+    | '/super-admin/billing'
+    | '/super-admin/branches'
+    | '/super-admin/marketing'
+    | '/super-admin/reports'
+    | '/super-admin/restaurants'
+    | '/super-admin/revenue'
+    | '/super-admin/security'
+    | '/super-admin/settings'
+    | '/super-admin/support'
+    | '/super-admin/users'
+    | '/admin/'
+    | '/super-admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRouteWithChildren
+  SuperAdminRoute: typeof SuperAdminRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/super-admin': {
+      id: '/super-admin'
+      path: '/super-admin'
+      fullPath: '/super-admin'
+      preLoaderRoute: typeof SuperAdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +376,247 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/super-admin/': {
+      id: '/super-admin/'
+      path: '/'
+      fullPath: '/super-admin/'
+      preLoaderRoute: typeof SuperAdminIndexRouteImport
+      parentRoute: typeof SuperAdminRoute
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/super-admin/users': {
+      id: '/super-admin/users'
+      path: '/users'
+      fullPath: '/super-admin/users'
+      preLoaderRoute: typeof SuperAdminUsersRouteImport
+      parentRoute: typeof SuperAdminRoute
+    }
+    '/super-admin/support': {
+      id: '/super-admin/support'
+      path: '/support'
+      fullPath: '/super-admin/support'
+      preLoaderRoute: typeof SuperAdminSupportRouteImport
+      parentRoute: typeof SuperAdminRoute
+    }
+    '/super-admin/settings': {
+      id: '/super-admin/settings'
+      path: '/settings'
+      fullPath: '/super-admin/settings'
+      preLoaderRoute: typeof SuperAdminSettingsRouteImport
+      parentRoute: typeof SuperAdminRoute
+    }
+    '/super-admin/security': {
+      id: '/super-admin/security'
+      path: '/security'
+      fullPath: '/super-admin/security'
+      preLoaderRoute: typeof SuperAdminSecurityRouteImport
+      parentRoute: typeof SuperAdminRoute
+    }
+    '/super-admin/revenue': {
+      id: '/super-admin/revenue'
+      path: '/revenue'
+      fullPath: '/super-admin/revenue'
+      preLoaderRoute: typeof SuperAdminRevenueRouteImport
+      parentRoute: typeof SuperAdminRoute
+    }
+    '/super-admin/restaurants': {
+      id: '/super-admin/restaurants'
+      path: '/restaurants'
+      fullPath: '/super-admin/restaurants'
+      preLoaderRoute: typeof SuperAdminRestaurantsRouteImport
+      parentRoute: typeof SuperAdminRoute
+    }
+    '/super-admin/reports': {
+      id: '/super-admin/reports'
+      path: '/reports'
+      fullPath: '/super-admin/reports'
+      preLoaderRoute: typeof SuperAdminReportsRouteImport
+      parentRoute: typeof SuperAdminRoute
+    }
+    '/super-admin/marketing': {
+      id: '/super-admin/marketing'
+      path: '/marketing'
+      fullPath: '/super-admin/marketing'
+      preLoaderRoute: typeof SuperAdminMarketingRouteImport
+      parentRoute: typeof SuperAdminRoute
+    }
+    '/super-admin/branches': {
+      id: '/super-admin/branches'
+      path: '/branches'
+      fullPath: '/super-admin/branches'
+      preLoaderRoute: typeof SuperAdminBranchesRouteImport
+      parentRoute: typeof SuperAdminRoute
+    }
+    '/super-admin/billing': {
+      id: '/super-admin/billing'
+      path: '/billing'
+      fullPath: '/super-admin/billing'
+      preLoaderRoute: typeof SuperAdminBillingRouteImport
+      parentRoute: typeof SuperAdminRoute
+    }
+    '/admin/tables': {
+      id: '/admin/tables'
+      path: '/tables'
+      fullPath: '/admin/tables'
+      preLoaderRoute: typeof AdminTablesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/staff': {
+      id: '/admin/staff'
+      path: '/staff'
+      fullPath: '/admin/staff'
+      preLoaderRoute: typeof AdminStaffRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/reports': {
+      id: '/admin/reports'
+      path: '/reports'
+      fullPath: '/admin/reports'
+      preLoaderRoute: typeof AdminReportsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/pos': {
+      id: '/admin/pos'
+      path: '/pos'
+      fullPath: '/admin/pos'
+      preLoaderRoute: typeof AdminPosRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/orders': {
+      id: '/admin/orders'
+      path: '/orders'
+      fullPath: '/admin/orders'
+      preLoaderRoute: typeof AdminOrdersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/menu': {
+      id: '/admin/menu'
+      path: '/menu'
+      fullPath: '/admin/menu'
+      preLoaderRoute: typeof AdminMenuRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/kitchen': {
+      id: '/admin/kitchen'
+      path: '/kitchen'
+      fullPath: '/admin/kitchen'
+      preLoaderRoute: typeof AdminKitchenRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/inventory': {
+      id: '/admin/inventory'
+      path: '/inventory'
+      fullPath: '/admin/inventory'
+      preLoaderRoute: typeof AdminInventoryRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/finance': {
+      id: '/admin/finance'
+      path: '/finance'
+      fullPath: '/admin/finance'
+      preLoaderRoute: typeof AdminFinanceRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/customers': {
+      id: '/admin/customers'
+      path: '/customers'
+      fullPath: '/admin/customers'
+      preLoaderRoute: typeof AdminCustomersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/branches': {
+      id: '/admin/branches'
+      path: '/branches'
+      fullPath: '/admin/branches'
+      preLoaderRoute: typeof AdminBranchesRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
+interface AdminRouteChildren {
+  AdminBranchesRoute: typeof AdminBranchesRoute
+  AdminCustomersRoute: typeof AdminCustomersRoute
+  AdminFinanceRoute: typeof AdminFinanceRoute
+  AdminInventoryRoute: typeof AdminInventoryRoute
+  AdminKitchenRoute: typeof AdminKitchenRoute
+  AdminMenuRoute: typeof AdminMenuRoute
+  AdminOrdersRoute: typeof AdminOrdersRoute
+  AdminPosRoute: typeof AdminPosRoute
+  AdminReportsRoute: typeof AdminReportsRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminStaffRoute: typeof AdminStaffRoute
+  AdminTablesRoute: typeof AdminTablesRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminBranchesRoute: AdminBranchesRoute,
+  AdminCustomersRoute: AdminCustomersRoute,
+  AdminFinanceRoute: AdminFinanceRoute,
+  AdminInventoryRoute: AdminInventoryRoute,
+  AdminKitchenRoute: AdminKitchenRoute,
+  AdminMenuRoute: AdminMenuRoute,
+  AdminOrdersRoute: AdminOrdersRoute,
+  AdminPosRoute: AdminPosRoute,
+  AdminReportsRoute: AdminReportsRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  AdminStaffRoute: AdminStaffRoute,
+  AdminTablesRoute: AdminTablesRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
+interface SuperAdminRouteChildren {
+  SuperAdminBillingRoute: typeof SuperAdminBillingRoute
+  SuperAdminBranchesRoute: typeof SuperAdminBranchesRoute
+  SuperAdminMarketingRoute: typeof SuperAdminMarketingRoute
+  SuperAdminReportsRoute: typeof SuperAdminReportsRoute
+  SuperAdminRestaurantsRoute: typeof SuperAdminRestaurantsRoute
+  SuperAdminRevenueRoute: typeof SuperAdminRevenueRoute
+  SuperAdminSecurityRoute: typeof SuperAdminSecurityRoute
+  SuperAdminSettingsRoute: typeof SuperAdminSettingsRoute
+  SuperAdminSupportRoute: typeof SuperAdminSupportRoute
+  SuperAdminUsersRoute: typeof SuperAdminUsersRoute
+  SuperAdminIndexRoute: typeof SuperAdminIndexRoute
+}
+
+const SuperAdminRouteChildren: SuperAdminRouteChildren = {
+  SuperAdminBillingRoute: SuperAdminBillingRoute,
+  SuperAdminBranchesRoute: SuperAdminBranchesRoute,
+  SuperAdminMarketingRoute: SuperAdminMarketingRoute,
+  SuperAdminReportsRoute: SuperAdminReportsRoute,
+  SuperAdminRestaurantsRoute: SuperAdminRestaurantsRoute,
+  SuperAdminRevenueRoute: SuperAdminRevenueRoute,
+  SuperAdminSecurityRoute: SuperAdminSecurityRoute,
+  SuperAdminSettingsRoute: SuperAdminSettingsRoute,
+  SuperAdminSupportRoute: SuperAdminSupportRoute,
+  SuperAdminUsersRoute: SuperAdminUsersRoute,
+  SuperAdminIndexRoute: SuperAdminIndexRoute,
+}
+
+const SuperAdminRouteWithChildren = SuperAdminRoute._addFileChildren(
+  SuperAdminRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRouteWithChildren,
+  SuperAdminRoute: SuperAdminRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
