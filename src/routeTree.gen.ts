@@ -14,7 +14,13 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SuperAdminIndexRouteImport } from './routes/super-admin.index'
 import { Route as SuperAdminUsersRouteImport } from './routes/super-admin.users'
+import { Route as SuperAdminSupportRouteImport } from './routes/super-admin.support'
+import { Route as SuperAdminSettingsRouteImport } from './routes/super-admin.settings'
+import { Route as SuperAdminSecurityRouteImport } from './routes/super-admin.security'
+import { Route as SuperAdminRevenueRouteImport } from './routes/super-admin.revenue'
 import { Route as SuperAdminRestaurantsRouteImport } from './routes/super-admin.restaurants'
+import { Route as SuperAdminReportsRouteImport } from './routes/super-admin.reports'
+import { Route as SuperAdminMarketingRouteImport } from './routes/super-admin.marketing'
 import { Route as SuperAdminBranchesRouteImport } from './routes/super-admin.branches'
 import { Route as SuperAdminBillingRouteImport } from './routes/super-admin.billing'
 
@@ -43,9 +49,39 @@ const SuperAdminUsersRoute = SuperAdminUsersRouteImport.update({
   path: '/users',
   getParentRoute: () => SuperAdminRoute,
 } as any)
+const SuperAdminSupportRoute = SuperAdminSupportRouteImport.update({
+  id: '/support',
+  path: '/support',
+  getParentRoute: () => SuperAdminRoute,
+} as any)
+const SuperAdminSettingsRoute = SuperAdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => SuperAdminRoute,
+} as any)
+const SuperAdminSecurityRoute = SuperAdminSecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
+  getParentRoute: () => SuperAdminRoute,
+} as any)
+const SuperAdminRevenueRoute = SuperAdminRevenueRouteImport.update({
+  id: '/revenue',
+  path: '/revenue',
+  getParentRoute: () => SuperAdminRoute,
+} as any)
 const SuperAdminRestaurantsRoute = SuperAdminRestaurantsRouteImport.update({
   id: '/restaurants',
   path: '/restaurants',
+  getParentRoute: () => SuperAdminRoute,
+} as any)
+const SuperAdminReportsRoute = SuperAdminReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => SuperAdminRoute,
+} as any)
+const SuperAdminMarketingRoute = SuperAdminMarketingRouteImport.update({
+  id: '/marketing',
+  path: '/marketing',
   getParentRoute: () => SuperAdminRoute,
 } as any)
 const SuperAdminBranchesRoute = SuperAdminBranchesRouteImport.update({
@@ -65,7 +101,13 @@ export interface FileRoutesByFullPath {
   '/super-admin': typeof SuperAdminRouteWithChildren
   '/super-admin/billing': typeof SuperAdminBillingRoute
   '/super-admin/branches': typeof SuperAdminBranchesRoute
+  '/super-admin/marketing': typeof SuperAdminMarketingRoute
+  '/super-admin/reports': typeof SuperAdminReportsRoute
   '/super-admin/restaurants': typeof SuperAdminRestaurantsRoute
+  '/super-admin/revenue': typeof SuperAdminRevenueRoute
+  '/super-admin/security': typeof SuperAdminSecurityRoute
+  '/super-admin/settings': typeof SuperAdminSettingsRoute
+  '/super-admin/support': typeof SuperAdminSupportRoute
   '/super-admin/users': typeof SuperAdminUsersRoute
   '/super-admin/': typeof SuperAdminIndexRoute
 }
@@ -74,7 +116,13 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRoute
   '/super-admin/billing': typeof SuperAdminBillingRoute
   '/super-admin/branches': typeof SuperAdminBranchesRoute
+  '/super-admin/marketing': typeof SuperAdminMarketingRoute
+  '/super-admin/reports': typeof SuperAdminReportsRoute
   '/super-admin/restaurants': typeof SuperAdminRestaurantsRoute
+  '/super-admin/revenue': typeof SuperAdminRevenueRoute
+  '/super-admin/security': typeof SuperAdminSecurityRoute
+  '/super-admin/settings': typeof SuperAdminSettingsRoute
+  '/super-admin/support': typeof SuperAdminSupportRoute
   '/super-admin/users': typeof SuperAdminUsersRoute
   '/super-admin': typeof SuperAdminIndexRoute
 }
@@ -85,7 +133,13 @@ export interface FileRoutesById {
   '/super-admin': typeof SuperAdminRouteWithChildren
   '/super-admin/billing': typeof SuperAdminBillingRoute
   '/super-admin/branches': typeof SuperAdminBranchesRoute
+  '/super-admin/marketing': typeof SuperAdminMarketingRoute
+  '/super-admin/reports': typeof SuperAdminReportsRoute
   '/super-admin/restaurants': typeof SuperAdminRestaurantsRoute
+  '/super-admin/revenue': typeof SuperAdminRevenueRoute
+  '/super-admin/security': typeof SuperAdminSecurityRoute
+  '/super-admin/settings': typeof SuperAdminSettingsRoute
+  '/super-admin/support': typeof SuperAdminSupportRoute
   '/super-admin/users': typeof SuperAdminUsersRoute
   '/super-admin/': typeof SuperAdminIndexRoute
 }
@@ -97,7 +151,13 @@ export interface FileRouteTypes {
     | '/super-admin'
     | '/super-admin/billing'
     | '/super-admin/branches'
+    | '/super-admin/marketing'
+    | '/super-admin/reports'
     | '/super-admin/restaurants'
+    | '/super-admin/revenue'
+    | '/super-admin/security'
+    | '/super-admin/settings'
+    | '/super-admin/support'
     | '/super-admin/users'
     | '/super-admin/'
   fileRoutesByTo: FileRoutesByTo
@@ -106,7 +166,13 @@ export interface FileRouteTypes {
     | '/admin'
     | '/super-admin/billing'
     | '/super-admin/branches'
+    | '/super-admin/marketing'
+    | '/super-admin/reports'
     | '/super-admin/restaurants'
+    | '/super-admin/revenue'
+    | '/super-admin/security'
+    | '/super-admin/settings'
+    | '/super-admin/support'
     | '/super-admin/users'
     | '/super-admin'
   id:
@@ -116,7 +182,13 @@ export interface FileRouteTypes {
     | '/super-admin'
     | '/super-admin/billing'
     | '/super-admin/branches'
+    | '/super-admin/marketing'
+    | '/super-admin/reports'
     | '/super-admin/restaurants'
+    | '/super-admin/revenue'
+    | '/super-admin/security'
+    | '/super-admin/settings'
+    | '/super-admin/support'
     | '/super-admin/users'
     | '/super-admin/'
   fileRoutesById: FileRoutesById
@@ -164,11 +236,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SuperAdminUsersRouteImport
       parentRoute: typeof SuperAdminRoute
     }
+    '/super-admin/support': {
+      id: '/super-admin/support'
+      path: '/support'
+      fullPath: '/super-admin/support'
+      preLoaderRoute: typeof SuperAdminSupportRouteImport
+      parentRoute: typeof SuperAdminRoute
+    }
+    '/super-admin/settings': {
+      id: '/super-admin/settings'
+      path: '/settings'
+      fullPath: '/super-admin/settings'
+      preLoaderRoute: typeof SuperAdminSettingsRouteImport
+      parentRoute: typeof SuperAdminRoute
+    }
+    '/super-admin/security': {
+      id: '/super-admin/security'
+      path: '/security'
+      fullPath: '/super-admin/security'
+      preLoaderRoute: typeof SuperAdminSecurityRouteImport
+      parentRoute: typeof SuperAdminRoute
+    }
+    '/super-admin/revenue': {
+      id: '/super-admin/revenue'
+      path: '/revenue'
+      fullPath: '/super-admin/revenue'
+      preLoaderRoute: typeof SuperAdminRevenueRouteImport
+      parentRoute: typeof SuperAdminRoute
+    }
     '/super-admin/restaurants': {
       id: '/super-admin/restaurants'
       path: '/restaurants'
       fullPath: '/super-admin/restaurants'
       preLoaderRoute: typeof SuperAdminRestaurantsRouteImport
+      parentRoute: typeof SuperAdminRoute
+    }
+    '/super-admin/reports': {
+      id: '/super-admin/reports'
+      path: '/reports'
+      fullPath: '/super-admin/reports'
+      preLoaderRoute: typeof SuperAdminReportsRouteImport
+      parentRoute: typeof SuperAdminRoute
+    }
+    '/super-admin/marketing': {
+      id: '/super-admin/marketing'
+      path: '/marketing'
+      fullPath: '/super-admin/marketing'
+      preLoaderRoute: typeof SuperAdminMarketingRouteImport
       parentRoute: typeof SuperAdminRoute
     }
     '/super-admin/branches': {
@@ -191,7 +305,13 @@ declare module '@tanstack/react-router' {
 interface SuperAdminRouteChildren {
   SuperAdminBillingRoute: typeof SuperAdminBillingRoute
   SuperAdminBranchesRoute: typeof SuperAdminBranchesRoute
+  SuperAdminMarketingRoute: typeof SuperAdminMarketingRoute
+  SuperAdminReportsRoute: typeof SuperAdminReportsRoute
   SuperAdminRestaurantsRoute: typeof SuperAdminRestaurantsRoute
+  SuperAdminRevenueRoute: typeof SuperAdminRevenueRoute
+  SuperAdminSecurityRoute: typeof SuperAdminSecurityRoute
+  SuperAdminSettingsRoute: typeof SuperAdminSettingsRoute
+  SuperAdminSupportRoute: typeof SuperAdminSupportRoute
   SuperAdminUsersRoute: typeof SuperAdminUsersRoute
   SuperAdminIndexRoute: typeof SuperAdminIndexRoute
 }
@@ -199,7 +319,13 @@ interface SuperAdminRouteChildren {
 const SuperAdminRouteChildren: SuperAdminRouteChildren = {
   SuperAdminBillingRoute: SuperAdminBillingRoute,
   SuperAdminBranchesRoute: SuperAdminBranchesRoute,
+  SuperAdminMarketingRoute: SuperAdminMarketingRoute,
+  SuperAdminReportsRoute: SuperAdminReportsRoute,
   SuperAdminRestaurantsRoute: SuperAdminRestaurantsRoute,
+  SuperAdminRevenueRoute: SuperAdminRevenueRoute,
+  SuperAdminSecurityRoute: SuperAdminSecurityRoute,
+  SuperAdminSettingsRoute: SuperAdminSettingsRoute,
+  SuperAdminSupportRoute: SuperAdminSupportRoute,
   SuperAdminUsersRoute: SuperAdminUsersRoute,
   SuperAdminIndexRoute: SuperAdminIndexRoute,
 }
