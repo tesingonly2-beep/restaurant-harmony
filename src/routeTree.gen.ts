@@ -13,7 +13,10 @@ import { Route as SuperAdminRouteImport } from './routes/super-admin'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SuperAdminIndexRouteImport } from './routes/super-admin.index'
+import { Route as SuperAdminUsersRouteImport } from './routes/super-admin.users'
 import { Route as SuperAdminRestaurantsRouteImport } from './routes/super-admin.restaurants'
+import { Route as SuperAdminBranchesRouteImport } from './routes/super-admin.branches'
+import { Route as SuperAdminBillingRouteImport } from './routes/super-admin.billing'
 
 const SuperAdminRoute = SuperAdminRouteImport.update({
   id: '/super-admin',
@@ -35,9 +38,24 @@ const SuperAdminIndexRoute = SuperAdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => SuperAdminRoute,
 } as any)
+const SuperAdminUsersRoute = SuperAdminUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => SuperAdminRoute,
+} as any)
 const SuperAdminRestaurantsRoute = SuperAdminRestaurantsRouteImport.update({
   id: '/restaurants',
   path: '/restaurants',
+  getParentRoute: () => SuperAdminRoute,
+} as any)
+const SuperAdminBranchesRoute = SuperAdminBranchesRouteImport.update({
+  id: '/branches',
+  path: '/branches',
+  getParentRoute: () => SuperAdminRoute,
+} as any)
+const SuperAdminBillingRoute = SuperAdminBillingRouteImport.update({
+  id: '/billing',
+  path: '/billing',
   getParentRoute: () => SuperAdminRoute,
 } as any)
 
@@ -45,13 +63,19 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/super-admin': typeof SuperAdminRouteWithChildren
+  '/super-admin/billing': typeof SuperAdminBillingRoute
+  '/super-admin/branches': typeof SuperAdminBranchesRoute
   '/super-admin/restaurants': typeof SuperAdminRestaurantsRoute
+  '/super-admin/users': typeof SuperAdminUsersRoute
   '/super-admin/': typeof SuperAdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/super-admin/billing': typeof SuperAdminBillingRoute
+  '/super-admin/branches': typeof SuperAdminBranchesRoute
   '/super-admin/restaurants': typeof SuperAdminRestaurantsRoute
+  '/super-admin/users': typeof SuperAdminUsersRoute
   '/super-admin': typeof SuperAdminIndexRoute
 }
 export interface FileRoutesById {
@@ -59,7 +83,10 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/super-admin': typeof SuperAdminRouteWithChildren
+  '/super-admin/billing': typeof SuperAdminBillingRoute
+  '/super-admin/branches': typeof SuperAdminBranchesRoute
   '/super-admin/restaurants': typeof SuperAdminRestaurantsRoute
+  '/super-admin/users': typeof SuperAdminUsersRoute
   '/super-admin/': typeof SuperAdminIndexRoute
 }
 export interface FileRouteTypes {
@@ -68,16 +95,29 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/super-admin'
+    | '/super-admin/billing'
+    | '/super-admin/branches'
     | '/super-admin/restaurants'
+    | '/super-admin/users'
     | '/super-admin/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/admin' | '/super-admin/restaurants' | '/super-admin'
+  to:
+    | '/'
+    | '/admin'
+    | '/super-admin/billing'
+    | '/super-admin/branches'
+    | '/super-admin/restaurants'
+    | '/super-admin/users'
+    | '/super-admin'
   id:
     | '__root__'
     | '/'
     | '/admin'
     | '/super-admin'
+    | '/super-admin/billing'
+    | '/super-admin/branches'
     | '/super-admin/restaurants'
+    | '/super-admin/users'
     | '/super-admin/'
   fileRoutesById: FileRoutesById
 }
@@ -117,6 +157,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SuperAdminIndexRouteImport
       parentRoute: typeof SuperAdminRoute
     }
+    '/super-admin/users': {
+      id: '/super-admin/users'
+      path: '/users'
+      fullPath: '/super-admin/users'
+      preLoaderRoute: typeof SuperAdminUsersRouteImport
+      parentRoute: typeof SuperAdminRoute
+    }
     '/super-admin/restaurants': {
       id: '/super-admin/restaurants'
       path: '/restaurants'
@@ -124,16 +171,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SuperAdminRestaurantsRouteImport
       parentRoute: typeof SuperAdminRoute
     }
+    '/super-admin/branches': {
+      id: '/super-admin/branches'
+      path: '/branches'
+      fullPath: '/super-admin/branches'
+      preLoaderRoute: typeof SuperAdminBranchesRouteImport
+      parentRoute: typeof SuperAdminRoute
+    }
+    '/super-admin/billing': {
+      id: '/super-admin/billing'
+      path: '/billing'
+      fullPath: '/super-admin/billing'
+      preLoaderRoute: typeof SuperAdminBillingRouteImport
+      parentRoute: typeof SuperAdminRoute
+    }
   }
 }
 
 interface SuperAdminRouteChildren {
+  SuperAdminBillingRoute: typeof SuperAdminBillingRoute
+  SuperAdminBranchesRoute: typeof SuperAdminBranchesRoute
   SuperAdminRestaurantsRoute: typeof SuperAdminRestaurantsRoute
+  SuperAdminUsersRoute: typeof SuperAdminUsersRoute
   SuperAdminIndexRoute: typeof SuperAdminIndexRoute
 }
 
 const SuperAdminRouteChildren: SuperAdminRouteChildren = {
+  SuperAdminBillingRoute: SuperAdminBillingRoute,
+  SuperAdminBranchesRoute: SuperAdminBranchesRoute,
   SuperAdminRestaurantsRoute: SuperAdminRestaurantsRoute,
+  SuperAdminUsersRoute: SuperAdminUsersRoute,
   SuperAdminIndexRoute: SuperAdminIndexRoute,
 }
 
