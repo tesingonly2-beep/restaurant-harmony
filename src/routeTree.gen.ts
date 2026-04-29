@@ -25,16 +25,13 @@ import { Route as SuperAdminMarketingRouteImport } from './routes/super-admin.ma
 import { Route as SuperAdminBranchesRouteImport } from './routes/super-admin.branches'
 import { Route as SuperAdminBillingRouteImport } from './routes/super-admin.billing'
 import { Route as AdminTablesRouteImport } from './routes/admin.tables'
-import { Route as AdminStaffRouteImport } from './routes/admin.staff'
 import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
 import { Route as AdminReportsRouteImport } from './routes/admin.reports'
 import { Route as AdminPosRouteImport } from './routes/admin.pos'
 import { Route as AdminOrdersRouteImport } from './routes/admin.orders'
 import { Route as AdminMenuRouteImport } from './routes/admin.menu'
-import { Route as AdminKitchenRouteImport } from './routes/admin.kitchen'
 import { Route as AdminInventoryRouteImport } from './routes/admin.inventory'
 import { Route as AdminFinanceRouteImport } from './routes/admin.finance'
-import { Route as AdminCustomersRouteImport } from './routes/admin.customers'
 import { Route as AdminBranchesRouteImport } from './routes/admin.branches'
 
 const SuperAdminRoute = SuperAdminRouteImport.update({
@@ -117,11 +114,6 @@ const AdminTablesRoute = AdminTablesRouteImport.update({
   path: '/tables',
   getParentRoute: () => AdminRoute,
 } as any)
-const AdminStaffRoute = AdminStaffRouteImport.update({
-  id: '/staff',
-  path: '/staff',
-  getParentRoute: () => AdminRoute,
-} as any)
 const AdminSettingsRoute = AdminSettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
@@ -147,11 +139,6 @@ const AdminMenuRoute = AdminMenuRouteImport.update({
   path: '/menu',
   getParentRoute: () => AdminRoute,
 } as any)
-const AdminKitchenRoute = AdminKitchenRouteImport.update({
-  id: '/kitchen',
-  path: '/kitchen',
-  getParentRoute: () => AdminRoute,
-} as any)
 const AdminInventoryRoute = AdminInventoryRouteImport.update({
   id: '/inventory',
   path: '/inventory',
@@ -160,11 +147,6 @@ const AdminInventoryRoute = AdminInventoryRouteImport.update({
 const AdminFinanceRoute = AdminFinanceRouteImport.update({
   id: '/finance',
   path: '/finance',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminCustomersRoute = AdminCustomersRouteImport.update({
-  id: '/customers',
-  path: '/customers',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminBranchesRoute = AdminBranchesRouteImport.update({
@@ -178,16 +160,13 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRouteWithChildren
   '/super-admin': typeof SuperAdminRouteWithChildren
   '/admin/branches': typeof AdminBranchesRoute
-  '/admin/customers': typeof AdminCustomersRoute
   '/admin/finance': typeof AdminFinanceRoute
   '/admin/inventory': typeof AdminInventoryRoute
-  '/admin/kitchen': typeof AdminKitchenRoute
   '/admin/menu': typeof AdminMenuRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/admin/pos': typeof AdminPosRoute
   '/admin/reports': typeof AdminReportsRoute
   '/admin/settings': typeof AdminSettingsRoute
-  '/admin/staff': typeof AdminStaffRoute
   '/admin/tables': typeof AdminTablesRoute
   '/super-admin/billing': typeof SuperAdminBillingRoute
   '/super-admin/branches': typeof SuperAdminBranchesRoute
@@ -205,16 +184,13 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin/branches': typeof AdminBranchesRoute
-  '/admin/customers': typeof AdminCustomersRoute
   '/admin/finance': typeof AdminFinanceRoute
   '/admin/inventory': typeof AdminInventoryRoute
-  '/admin/kitchen': typeof AdminKitchenRoute
   '/admin/menu': typeof AdminMenuRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/admin/pos': typeof AdminPosRoute
   '/admin/reports': typeof AdminReportsRoute
   '/admin/settings': typeof AdminSettingsRoute
-  '/admin/staff': typeof AdminStaffRoute
   '/admin/tables': typeof AdminTablesRoute
   '/super-admin/billing': typeof SuperAdminBillingRoute
   '/super-admin/branches': typeof SuperAdminBranchesRoute
@@ -235,16 +211,13 @@ export interface FileRoutesById {
   '/admin': typeof AdminRouteWithChildren
   '/super-admin': typeof SuperAdminRouteWithChildren
   '/admin/branches': typeof AdminBranchesRoute
-  '/admin/customers': typeof AdminCustomersRoute
   '/admin/finance': typeof AdminFinanceRoute
   '/admin/inventory': typeof AdminInventoryRoute
-  '/admin/kitchen': typeof AdminKitchenRoute
   '/admin/menu': typeof AdminMenuRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/admin/pos': typeof AdminPosRoute
   '/admin/reports': typeof AdminReportsRoute
   '/admin/settings': typeof AdminSettingsRoute
-  '/admin/staff': typeof AdminStaffRoute
   '/admin/tables': typeof AdminTablesRoute
   '/super-admin/billing': typeof SuperAdminBillingRoute
   '/super-admin/branches': typeof SuperAdminBranchesRoute
@@ -266,16 +239,13 @@ export interface FileRouteTypes {
     | '/admin'
     | '/super-admin'
     | '/admin/branches'
-    | '/admin/customers'
     | '/admin/finance'
     | '/admin/inventory'
-    | '/admin/kitchen'
     | '/admin/menu'
     | '/admin/orders'
     | '/admin/pos'
     | '/admin/reports'
     | '/admin/settings'
-    | '/admin/staff'
     | '/admin/tables'
     | '/super-admin/billing'
     | '/super-admin/branches'
@@ -293,16 +263,13 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/admin/branches'
-    | '/admin/customers'
     | '/admin/finance'
     | '/admin/inventory'
-    | '/admin/kitchen'
     | '/admin/menu'
     | '/admin/orders'
     | '/admin/pos'
     | '/admin/reports'
     | '/admin/settings'
-    | '/admin/staff'
     | '/admin/tables'
     | '/super-admin/billing'
     | '/super-admin/branches'
@@ -322,16 +289,13 @@ export interface FileRouteTypes {
     | '/admin'
     | '/super-admin'
     | '/admin/branches'
-    | '/admin/customers'
     | '/admin/finance'
     | '/admin/inventory'
-    | '/admin/kitchen'
     | '/admin/menu'
     | '/admin/orders'
     | '/admin/pos'
     | '/admin/reports'
     | '/admin/settings'
-    | '/admin/staff'
     | '/admin/tables'
     | '/super-admin/billing'
     | '/super-admin/branches'
@@ -467,13 +431,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminTablesRouteImport
       parentRoute: typeof AdminRoute
     }
-    '/admin/staff': {
-      id: '/admin/staff'
-      path: '/staff'
-      fullPath: '/admin/staff'
-      preLoaderRoute: typeof AdminStaffRouteImport
-      parentRoute: typeof AdminRoute
-    }
     '/admin/settings': {
       id: '/admin/settings'
       path: '/settings'
@@ -509,13 +466,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminMenuRouteImport
       parentRoute: typeof AdminRoute
     }
-    '/admin/kitchen': {
-      id: '/admin/kitchen'
-      path: '/kitchen'
-      fullPath: '/admin/kitchen'
-      preLoaderRoute: typeof AdminKitchenRouteImport
-      parentRoute: typeof AdminRoute
-    }
     '/admin/inventory': {
       id: '/admin/inventory'
       path: '/inventory'
@@ -530,13 +480,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminFinanceRouteImport
       parentRoute: typeof AdminRoute
     }
-    '/admin/customers': {
-      id: '/admin/customers'
-      path: '/customers'
-      fullPath: '/admin/customers'
-      preLoaderRoute: typeof AdminCustomersRouteImport
-      parentRoute: typeof AdminRoute
-    }
     '/admin/branches': {
       id: '/admin/branches'
       path: '/branches'
@@ -549,32 +492,26 @@ declare module '@tanstack/react-router' {
 
 interface AdminRouteChildren {
   AdminBranchesRoute: typeof AdminBranchesRoute
-  AdminCustomersRoute: typeof AdminCustomersRoute
   AdminFinanceRoute: typeof AdminFinanceRoute
   AdminInventoryRoute: typeof AdminInventoryRoute
-  AdminKitchenRoute: typeof AdminKitchenRoute
   AdminMenuRoute: typeof AdminMenuRoute
   AdminOrdersRoute: typeof AdminOrdersRoute
   AdminPosRoute: typeof AdminPosRoute
   AdminReportsRoute: typeof AdminReportsRoute
   AdminSettingsRoute: typeof AdminSettingsRoute
-  AdminStaffRoute: typeof AdminStaffRoute
   AdminTablesRoute: typeof AdminTablesRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
   AdminBranchesRoute: AdminBranchesRoute,
-  AdminCustomersRoute: AdminCustomersRoute,
   AdminFinanceRoute: AdminFinanceRoute,
   AdminInventoryRoute: AdminInventoryRoute,
-  AdminKitchenRoute: AdminKitchenRoute,
   AdminMenuRoute: AdminMenuRoute,
   AdminOrdersRoute: AdminOrdersRoute,
   AdminPosRoute: AdminPosRoute,
   AdminReportsRoute: AdminReportsRoute,
   AdminSettingsRoute: AdminSettingsRoute,
-  AdminStaffRoute: AdminStaffRoute,
   AdminTablesRoute: AdminTablesRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
