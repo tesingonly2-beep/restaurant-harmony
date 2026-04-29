@@ -1,8 +1,8 @@
 import {
   LayoutDashboard, Building2, GitBranch, Users, CreditCard, TrendingUp,
   LifeBuoy, Settings, BarChart3, Shield, Megaphone,
-  ShoppingCart, UtensilsCrossed, ClipboardList, LayoutGrid, ChefHat,
-  Package, UserCog, Heart, Wallet, FileBarChart, Store,
+  ShoppingCart, UtensilsCrossed, ClipboardList, LayoutGrid,
+  Package, Wallet, FileBarChart, Store,
 } from "lucide-react";
 
 export type NavItem = {
@@ -32,10 +32,7 @@ export const adminNav: NavItem[] = [
   { title: "Orders", url: "/admin/orders", icon: ClipboardList, description: "Dine-in, takeaway, delivery" },
   { title: "Menu", url: "/admin/menu", icon: UtensilsCrossed, description: "Items, combos, pricing" },
   { title: "Tables", url: "/admin/tables", icon: LayoutGrid, description: "Floor plan & reservations" },
-  { title: "Kitchen (KDS)", url: "/admin/kitchen", icon: ChefHat, description: "Live kitchen display" },
   { title: "Inventory", url: "/admin/inventory", icon: Package, description: "Stock, vendors, waste" },
-  { title: "Staff", url: "/admin/staff", icon: UserCog, description: "Employees, shifts, payroll" },
-  { title: "Customers", url: "/admin/customers", icon: Heart, description: "CRM, loyalty, feedback" },
   { title: "Finance", url: "/admin/finance", icon: Wallet, description: "P&L, expenses, taxes" },
   { title: "Reports", url: "/admin/reports", icon: FileBarChart, description: "Sales & performance" },
   { title: "Branches", url: "/admin/branches", icon: Store, description: "Multi-outlet control" },
