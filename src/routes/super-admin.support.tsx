@@ -3,6 +3,7 @@ import { PageHeader, StatGrid, SectionCard, FeatureList } from "@/components/Pag
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { notify } from "@/hooks/use-action";
 
 export const Route = createFileRoute("/super-admin/support")({
   component: SupportPage,
@@ -16,9 +17,9 @@ const tickets = [
 ];
 
 const leads = [
-  { name: "Saffron Dine", source: "Website", stage: "Demo Booked", value: "$249/mo" },
-  { name: "Curry Express", source: "Referral", stage: "Negotiation", value: "$899/mo" },
-  { name: "Tandoor Hub", source: "Cold Outreach", stage: "Trial", value: "$249/mo" },
+  { name: "Saffron Dine", source: "Website", stage: "Demo Booked", value: "₹19,920/mo" },
+  { name: "Curry Express", source: "Referral", stage: "Negotiation", value: "₹71,920/mo" },
+  { name: "Tandoor Hub", source: "Cold Outreach", stage: "Trial", value: "₹19,920/mo" },
 ];
 
 function SupportPage() {
@@ -50,7 +51,7 @@ function SupportPage() {
               </tr>
             </thead>
             <tbody>
-              {tickets.map(t => (
+              {tickets.map((t) => (
                 <tr key={t.id} className="border-b border-border/40 hover:bg-muted/40">
                   <td className="py-2 px-3 font-mono text-xs">{t.id}</td>
                   <td className="py-2 px-3">{t.subject}</td>
@@ -62,7 +63,9 @@ function SupportPage() {
                   </td>
                   <td className="py-2 px-3"><Badge variant="secondary">{t.status}</Badge></td>
                   <td className="py-2 px-3 text-muted-foreground">{t.age}</td>
-                  <td className="py-2 px-3 text-right"><Button variant="ghost" size="sm">Open</Button></td>
+                  <td className="py-2 px-3 text-right">
+                    <Button variant="ghost" size="sm" onClick={() => notify(`Opened ${t.id}`, t.subject)}>Open</Button>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -73,7 +76,7 @@ function SupportPage() {
       <div className="grid gap-6 md:grid-cols-2">
         <SectionCard title="Lead Pipeline">
           <div className="space-y-3">
-            {leads.map(l => (
+            {leads.map((l) => (
               <div key={l.name} className="flex items-center justify-between text-sm border-b border-border/40 pb-2 last:border-0 last:pb-0">
                 <div>
                   <div className="font-medium">{l.name}</div>

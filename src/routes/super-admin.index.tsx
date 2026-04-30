@@ -9,11 +9,11 @@ export const Route = createFileRoute("/super-admin/")({
 });
 
 const recentSignups = [
-  { name: "The Spice Route", plan: "Pro", branches: 3, status: "Active", mrr: "$249" },
-  { name: "Bombay Bistro", plan: "Enterprise", branches: 12, status: "Active", mrr: "$899" },
-  { name: "Curry Kitchen", plan: "Basic", branches: 1, status: "Trial", mrr: "$0" },
-  { name: "Tandoor Nights", plan: "Pro", branches: 2, status: "Active", mrr: "$249" },
-  { name: "Naan Stop", plan: "Basic", branches: 1, status: "Suspended", mrr: "$49" },
+  { name: "The Spice Route", plan: "Pro", branches: 3, status: "Active", mrr: "₹19,920" },
+  { name: "Bombay Bistro", plan: "Enterprise", branches: 12, status: "Active", mrr: "₹71,920" },
+  { name: "Curry Kitchen", plan: "Basic", branches: 1, status: "Trial", mrr: "₹0" },
+  { name: "Tandoor Nights", plan: "Pro", branches: 2, status: "Active", mrr: "₹19,920" },
+  { name: "Naan Stop", plan: "Basic", branches: 1, status: "Suspended", mrr: "₹3,920" },
 ];
 
 function SuperAdminDashboard() {
@@ -28,7 +28,7 @@ function SuperAdminDashboard() {
       <StatGrid
         stats={[
           { label: "Active Restaurants", value: "1,284", hint: "+42 this week", tone: "success" },
-          { label: "Monthly Recurring Revenue", value: "$148,920", hint: "+12.4% MoM", tone: "primary" },
+          { label: "Monthly Recurring Revenue", value: "₹1.19 Cr", hint: "+12.4% MoM", tone: "primary" },
           { label: "Orders Processed (24h)", value: "92,471", hint: "Across all tenants" },
           { label: "Open Support Tickets", value: "37", hint: "8 high priority", tone: "warning" },
         ]}
