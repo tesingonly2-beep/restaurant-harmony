@@ -152,7 +152,14 @@ function AdminDashboard() {
           <div className="space-y-3">
             {topItems.map((t, i) => (
               <div key={t.name} className="flex items-center gap-3">
-                <div className="text-2xl">{t.emoji}</div>
+                <div className={cn(
+                  "h-9 w-9 rounded-lg flex items-center justify-center text-sm font-bold shrink-0",
+                  i === 0 ? "bg-primary text-primary-foreground shadow-[var(--shadow-warm)]"
+                  : i === 1 ? "bg-accent/20 text-accent"
+                  : "bg-muted text-muted-foreground"
+                )}>
+                  {i + 1}
+                </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-2 mb-1">
                     <div className="flex items-center gap-2 min-w-0">
