@@ -1,11 +1,12 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import { ChefHat, ShieldCheck, Store } from "lucide-react";
+import { ShieldCheck, Store } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import saffronMark from "@/assets/saffron-mark.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -42,8 +43,8 @@ function LoginPage() {
           backgroundSize: "40px 40px",
         }} />
         <div className="relative flex items-center gap-3">
-          <div className="h-12 w-12 rounded-2xl bg-white/15 backdrop-blur flex items-center justify-center">
-            <ChefHat className="h-6 w-6" />
+          <div className="h-12 w-12 rounded-2xl bg-white/95 backdrop-blur flex items-center justify-center shadow-lg">
+            <img src={saffronMark} alt="Saffron ERP" width={40} height={40} className="h-9 w-9 object-contain" />
           </div>
           <div>
             <div className="font-semibold text-xl tracking-tight">Saffron ERP</div>
