@@ -21,11 +21,11 @@ const channelData = [
 ];
 
 const topItems = [
-  { name: "Butter Chicken", qty: 64, revenue: 66560, emoji: "🍛" },
-  { name: "Veg Biryani", qty: 52, revenue: 49920, emoji: "🍚" },
-  { name: "Paneer Tikka", qty: 41, revenue: 39360, emoji: "🧀" },
-  { name: "Garlic Naan", qty: 38, revenue: 12160, emoji: "🥖" },
-  { name: "Mango Lassi", qty: 36, revenue: 14400, emoji: "🥤" },
+  { name: "Butter Chicken", qty: 64, revenue: 66560 },
+  { name: "Veg Biryani", qty: 52, revenue: 49920 },
+  { name: "Paneer Tikka", qty: 41, revenue: 39360 },
+  { name: "Garlic Naan", qty: 38, revenue: 12160 },
+  { name: "Mango Lassi", qty: 36, revenue: 14400 },
 ];
 
 const orders = [
