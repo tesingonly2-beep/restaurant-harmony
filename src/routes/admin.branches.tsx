@@ -3,31 +3,33 @@ import { PageHeader, StatGrid, SectionCard, FeatureList } from "@/components/Pag
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Store } from "lucide-react";
+import { formatINR } from "@/lib/currency";
 
 export const Route = createFileRoute("/admin/branches")({
   component: BranchesPage,
 });
 
 const branches = [
-  { name: "Spice Route — Downtown", city: "Mumbai", sales: "$3,842", orders: 184, status: "Open" },
-  { name: "Spice Route — Bandra", city: "Mumbai", sales: "$2,914", orders: 132, status: "Open" },
-  { name: "Spice Route — Andheri", city: "Mumbai", sales: "$1,640", orders: 78, status: "Open" },
+  { name: "Spice Route — Downtown", city: "Mumbai", sales: 307360, orders: 184, status: "Open" },
+  { name: "Spice Route — Bandra", city: "Mumbai", sales: 233120, orders: 132, status: "Open" },
+  { name: "Spice Route — Andheri", city: "Mumbai", sales: 131200, orders: 78, status: "Open" },
 ];
 
 function BranchesPage() {
+  const total = branches.reduce((s, b) => s + b.sales, 0);
   return (
     <div className="space-y-6">
       <PageHeader eyebrow="Multi-outlet" title="Branches" description="Compare branches, centralize reports, transfer stock."
         primaryAction={{ label: "Add Branch" }}/>
       <StatGrid stats={[
-        { label: "Active Branches", value: "3" },
-        { label: "Total Sales (today)", value: "$8,396", tone: "primary" },
+        { label: "Active Branches", value: String(branches.length) },
+        { label: "Total Sales (today)", value: formatINR(total), tone: "primary" },
         { label: "Top Branch", value: "Downtown", tone: "success" },
         { label: "Stock Transfers (week)", value: "12" },
       ]}/>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {branches.map(b => (
+        {branches.map((b) => (
           <Card key={b.name} className="p-5 border-border/60">
             <div className="flex items-start justify-between">
               <div className="h-10 w-10 rounded-xl flex items-center justify-center text-primary-foreground" style={{ background: "var(--gradient-warm)" }}>
@@ -40,7 +42,7 @@ function BranchesPage() {
             <div className="grid grid-cols-2 gap-2 mt-4 pt-4 border-t border-border/60">
               <div>
                 <div className="text-xs text-muted-foreground">Today's Sales</div>
-                <div className="font-semibold">{b.sales}</div>
+                <div className="font-semibold">{formatINR(b.sales)}</div>
               </div>
               <div>
                 <div className="text-xs text-muted-foreground">Orders</div>

@@ -1,17 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, StatGrid, SectionCard, FeatureList } from "@/components/PageScaffold";
 import { Card } from "@/components/ui/card";
+import { formatINR } from "@/lib/currency";
 
 export const Route = createFileRoute("/admin/reports")({
   component: ReportsPage,
 });
 
 const top = [
-  { name: "Butter Chicken", sold: 184, rev: "$2,668" },
-  { name: "Lamb Biryani", sold: 142, rev: "$2,272" },
-  { name: "Garlic Naan", sold: 412, rev: "$1,236" },
-  { name: "Veg Biryani", sold: 98, rev: "$1,127" },
-  { name: "Mango Lassi", sold: 156, rev: "$702" },
+  { name: "Butter Chicken", sold: 184, rev: 213440 },
+  { name: "Lamb Biryani", sold: 142, rev: 181760 },
+  { name: "Garlic Naan", sold: 412, rev: 98880 },
+  { name: "Veg Biryani", sold: 98, rev: 90160 },
+  { name: "Mango Lassi", sold: 156, rev: 56160 },
 ];
 
 const hours = [10, 14, 22, 38, 64, 82, 71, 58, 92, 124, 138, 96];
@@ -23,9 +24,9 @@ function ReportsPage() {
     <div className="space-y-6">
       <PageHeader eyebrow="Insights" title="Reports" description="Sales, performance, inventory usage and peak hours."/>
       <StatGrid stats={[
-        { label: "Sales (week)", value: "$26,420" },
+        { label: "Sales (week)", value: formatINR(2113600) },
         { label: "Orders (week)", value: "1,284", tone: "primary" },
-        { label: "Avg Ticket", value: "$20.58", tone: "success" },
+        { label: "Avg Ticket", value: formatINR(1646), tone: "success" },
         { label: "Peak Hour", value: "8:00 PM" },
       ]}/>
 
@@ -45,10 +46,10 @@ function ReportsPage() {
         <Card className="p-5 border-border/60">
           <div className="font-medium mb-4">Best Selling Items</div>
           <div className="space-y-3">
-            {top.map(t => (
+            {top.map((t) => (
               <div key={t.name} className="flex items-center justify-between text-sm">
                 <span>{t.name}</span>
-                <span className="text-muted-foreground">{t.sold} sold · <span className="font-medium text-foreground">{t.rev}</span></span>
+                <span className="text-muted-foreground">{t.sold} sold · <span className="font-medium text-foreground">{formatINR(t.rev)}</span></span>
               </div>
             ))}
           </div>
