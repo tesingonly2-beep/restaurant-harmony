@@ -1,10 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import { PageHeader } from "@/components/PageScaffold";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, MoreHorizontal, Building2 } from "lucide-react";
+import { notify } from "@/hooks/use-action";
 
 export const Route = createFileRoute("/super-admin/restaurants")({
   component: RestaurantsPage,
@@ -21,6 +23,12 @@ const restaurants = [
 ];
 
 function RestaurantsPage() {
+  const [q, setQ] = useState("");
+  const filtered = restaurants.filter(
+    (r) =>
+      r.name.toLowerCase().includes(q.toLowerCase()) ||
+      r.owner.toLowerCase().includes(q.toLowerCase())
+  );
   return (
     <div className="space-y-6">
       <PageHeader
@@ -34,12 +42,17 @@ function RestaurantsPage() {
         <div className="flex flex-col sm:flex-row gap-3 mb-4">
           <div className="relative flex-1">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-            <Input placeholder="Search by name, owner or city…" className="pl-8" />
+            <Input
+              placeholder="Search by name, owner or city…"
+              className="pl-8"
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+            />
           </div>
           <div className="flex gap-2">
-            <Button variant="outline" size="sm">All Plans</Button>
-            <Button variant="outline" size="sm">All Status</Button>
-            <Button variant="outline" size="sm">Export</Button>
+            <Button variant="outline" size="sm" onClick={() => notify("Filter: All Plans")}>All Plans</Button>
+            <Button variant="outline" size="sm" onClick={() => notify("Filter: All Status")}>All Status</Button>
+            <Button variant="outline" size="sm" onClick={() => notify("Export started", "CSV will download shortly")}>Export</Button>
           </div>
         </div>
 
@@ -58,7 +71,7 @@ function RestaurantsPage() {
               </tr>
             </thead>
             <tbody>
-              {restaurants.map((r) => (
+              {filtered.map((r) => (
                 <tr key={r.name} className="border-b border-border/40 hover:bg-muted/40 transition-colors">
                   <td className="py-3 px-3">
                     <div className="flex items-center gap-3">
@@ -90,7 +103,7 @@ function RestaurantsPage() {
                   </td>
                   <td className="py-3 px-3 text-muted-foreground">{r.since}</td>
                   <td className="py-3 px-3 text-right">
-                    <Button variant="ghost" size="icon" className="h-8 w-8">
+                    <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => notify(`Manage ${r.name}`, `Owner: ${r.owner}`)}>
                       <MoreHorizontal className="h-4 w-4" />
                     </Button>
                   </td>
