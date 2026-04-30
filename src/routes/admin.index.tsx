@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { formatINR } from "@/lib/currency";
 import { notify } from "@/hooks/use-action";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/admin/")({
   head: () => ({ meta: [{ title: "Dashboard — Spice Route" }] }),
