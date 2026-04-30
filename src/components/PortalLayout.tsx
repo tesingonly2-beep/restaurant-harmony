@@ -98,11 +98,29 @@ export function PortalLayout({ brand, subtitle, nav, user }: Props) {
             )}
           </div>
           <div className="ml-auto flex items-center gap-2">
-            <div className="relative hidden lg:block">
+            <form
+              className="relative hidden lg:block"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const fd = new FormData(e.currentTarget);
+                const q = String(fd.get("q") ?? "").trim();
+                if (q) import("sonner").then(({ toast }) => toast(`Searching for "${q}"…`));
+              }}
+            >
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input placeholder="Search…" className="pl-8 w-64 bg-background" />
-            </div>
-            <Button variant="ghost" size="icon" className="relative">
+              <Input name="q" placeholder="Search…" className="pl-8 w-64 bg-background" />
+            </form>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="relative"
+              onClick={() =>
+                import("sonner").then(({ toast }) =>
+                  toast("3 new notifications", { description: "2 orders pending · 1 low stock alert" })
+                )
+              }
+              aria-label="Notifications"
+            >
               <Bell className="h-4 w-4" />
               <Badge className="absolute -top-1 -right-1 h-4 w-4 p-0 flex items-center justify-center text-[10px]">
                 3

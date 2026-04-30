@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Plus, Sparkles } from "lucide-react";
+import { notify } from "@/hooks/use-action";
 
 type Stat = { label: string; value: string; hint?: string; tone?: "default" | "primary" | "success" | "warning" };
 
@@ -103,7 +104,10 @@ export function PageHeader({
         {description && <p className="mt-1 text-sm text-muted-foreground max-w-2xl">{description}</p>}
       </div>
       {primaryAction && (
-        <Button onClick={primaryAction.onClick} className="shadow-[var(--shadow-warm)]">
+        <Button
+          onClick={primaryAction.onClick ?? (() => notify(primaryAction.label, "Action triggered (demo)"))}
+          className="shadow-[var(--shadow-warm)]"
+        >
           <Plus className="h-4 w-4 mr-1" /> {primaryAction.label}
         </Button>
       )}

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHeader, StatGrid, SectionCard, FeatureList } from "@/components/PageScaffold";
+import { PageHeader, StatGrid, FeatureList, SectionCard } from "@/components/PageScaffold";
 
 export const Route = createFileRoute("/super-admin/revenue")({
   component: RevenuePage,
@@ -15,10 +15,10 @@ function RevenuePage() {
       <PageHeader eyebrow="Finance" title="Revenue Dashboard"
         description="MRR, ARR, churn, and the customers driving your platform's growth." />
       <StatGrid stats={[
-        { label: "MRR", value: "$148.9K", hint: "+12.4% MoM", tone: "success" },
-        { label: "ARR", value: "$1.78M", hint: "+38% YoY", tone: "primary" },
+        { label: "MRR", value: "₹1.19 Cr", hint: "+12.4% MoM", tone: "success" },
+        { label: "ARR", value: "₹14.24 Cr", hint: "+38% YoY", tone: "primary" },
         { label: "Churn (30d)", value: "1.8%", hint: "−0.4 pts", tone: "success" },
-        { label: "ARPU", value: "$116", hint: "+$4 MoM" },
+        { label: "ARPU", value: "₹9,280", hint: "+₹320 MoM" },
       ]}/>
 
       <SectionCard title="Revenue trend" description="MRR by month (last 12)">
@@ -37,11 +37,11 @@ function RevenuePage() {
         <SectionCard title="Top Paying Clients">
           <div className="space-y-3">
             {[
-              { n: "Bombay Bistro", v: "$10,788/yr" },
-              { n: "Coastal Catch", v: "$10,788/yr" },
-              { n: "Royal Thali Group", v: "$8,964/yr" },
-              { n: "The Spice Route", v: "$2,988/yr" },
-            ].map(c => (
+              { n: "Bombay Bistro", v: "₹8.63 L/yr" },
+              { n: "Coastal Catch", v: "₹8.63 L/yr" },
+              { n: "Royal Thali Group", v: "₹7.17 L/yr" },
+              { n: "The Spice Route", v: "₹2.39 L/yr" },
+            ].map((c) => (
               <div key={c.n} className="flex justify-between text-sm">
                 <span>{c.n}</span><span className="font-medium">{c.v}</span>
               </div>

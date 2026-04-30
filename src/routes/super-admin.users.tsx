@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { notify } from "@/hooks/use-action";
 
 export const Route = createFileRoute("/super-admin/users")({
   component: UsersPage,
@@ -64,8 +65,8 @@ function UsersPage() {
                     </Badge>
                   </td>
                   <td className="py-3 px-3 text-right space-x-2">
-                    <Button variant="outline" size="sm">Reset</Button>
-                    <Button variant="ghost" size="sm">Force logout</Button>
+                    <Button variant="outline" size="sm" onClick={() => notify(`Password reset link sent to ${u.email}`)}>Reset</Button>
+                    <Button variant="ghost" size="sm" onClick={() => notify(`Logged out ${u.name}`)}>Force logout</Button>
                   </td>
                 </tr>
               ))}
