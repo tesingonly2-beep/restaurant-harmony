@@ -1,5 +1,6 @@
 import { Link, Outlet, useRouterState, useNavigate } from "@tanstack/react-router";
-import { ChefHat, LogOut, Search, Bell, ChevronRight } from "lucide-react";
+import { LogOut, Search, Bell, ChevronRight } from "lucide-react";
+import saffronMark from "@/assets/saffron-mark.png";
 import type { NavItem } from "@/lib/portal-nav";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -27,11 +28,8 @@ export function PortalLayout({ brand, subtitle, nav, user }: Props) {
         style={{ background: "var(--gradient-sidebar)" }}
       >
         <div className="flex items-center gap-3 px-5 py-5 border-b border-sidebar-border">
-          <div
-            className="flex h-10 w-10 items-center justify-center rounded-xl"
-            style={{ background: "var(--gradient-primary)" }}
-          >
-            <ChefHat className="h-5 w-5 text-primary-foreground" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/95 shadow-sm">
+            <img src={saffronMark} alt="Saffron ERP" width={32} height={32} className="h-8 w-8 object-contain" />
           </div>
           <div className="leading-tight">
             <div className="font-semibold tracking-tight">{brand}</div>
