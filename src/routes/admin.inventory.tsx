@@ -3,6 +3,7 @@ import { PageHeader, StatGrid, SectionCard, FeatureList } from "@/components/Pag
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { notify } from "@/hooks/use-action";
 
 export const Route = createFileRoute("/admin/inventory")({
   component: InventoryPage,
@@ -27,7 +28,7 @@ function InventoryPage() {
         { label: "SKUs Tracked", value: "142" },
         { label: "Low Stock", value: "8", tone: "warning" },
         { label: "Active Vendors", value: "24" },
-        { label: "Waste (week)", value: "$184", tone: "warning" },
+        { label: "Waste (week)", value: "₹14,720", tone: "warning" },
       ]}/>
 
       <Card className="p-4 border-border/60">
@@ -53,7 +54,7 @@ function InventoryPage() {
                   <td className="py-2 px-3">
                     <Badge className={s.status === "Low" ? "bg-warning text-warning-foreground" : "bg-success text-success-foreground"}>{s.status}</Badge>
                   </td>
-                  <td className="py-2 px-3 text-right"><Button variant="ghost" size="sm">Reorder</Button></td>
+                  <td className="py-2 px-3 text-right"><Button variant="ghost" size="sm" onClick={() => notify(`Reorder placed for ${s.name}`, `Vendor: ${s.vendor}`)}>Reorder</Button></td>
                 </tr>
               ))}
             </tbody>
