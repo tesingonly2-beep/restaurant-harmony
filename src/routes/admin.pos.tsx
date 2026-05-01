@@ -7,6 +7,18 @@ import { Badge } from "@/components/ui/badge";
 import { Plus, Minus, Trash2, Search, Receipt } from "lucide-react";
 import { formatINR } from "@/lib/currency";
 import { notify } from "@/hooks/use-action";
+import imgPaneerTikka from "@/assets/dishes/paneer-tikka.jpg";
+import imgChicken65 from "@/assets/dishes/chicken-65.jpg";
+import imgButterChicken from "@/assets/dishes/butter-chicken.jpg";
+import imgPaneerButterMasala from "@/assets/dishes/paneer-butter-masala.jpg";
+import imgLambBiryani from "@/assets/dishes/lamb-biryani.jpg";
+import imgVegBiryani from "@/assets/dishes/veg-biryani.jpg";
+import imgGarlicNaan from "@/assets/dishes/garlic-naan.jpg";
+import imgTandooriRoti from "@/assets/dishes/tandoori-roti.jpg";
+import imgMangoLassi from "@/assets/dishes/mango-lassi.jpg";
+import imgMasalaChai from "@/assets/dishes/masala-chai.jpg";
+import imgGulabJamun from "@/assets/dishes/gulab-jamun.jpg";
+import imgKulfi from "@/assets/dishes/kulfi.jpg";
 
 export const Route = createFileRoute("/admin/pos")({
   head: () => ({ meta: [{ title: "POS — Spice Route" }] }),
@@ -15,18 +27,18 @@ export const Route = createFileRoute("/admin/pos")({
 
 const categories = ["All", "Starters", "Mains", "Breads", "Drinks", "Desserts"];
 const items = [
-  { name: "Paneer Tikka", cat: "Starters", price: 320, color: "from-orange-400 to-red-500" },
-  { name: "Chicken 65", cat: "Starters", price: 360, color: "from-red-400 to-pink-500" },
-  { name: "Butter Chicken", cat: "Mains", price: 420, color: "from-amber-400 to-orange-500" },
-  { name: "Paneer Butter Masala", cat: "Mains", price: 360, color: "from-yellow-400 to-orange-400" },
-  { name: "Lamb Biryani", cat: "Mains", price: 480, color: "from-orange-500 to-red-600" },
-  { name: "Veg Biryani", cat: "Mains", price: 280, color: "from-amber-300 to-yellow-500" },
-  { name: "Garlic Naan", cat: "Breads", price: 80, color: "from-amber-200 to-amber-400" },
-  { name: "Tandoori Roti", cat: "Breads", price: 40, color: "from-orange-300 to-amber-500" },
-  { name: "Mango Lassi", cat: "Drinks", price: 120, color: "from-yellow-300 to-orange-400" },
-  { name: "Masala Chai", cat: "Drinks", price: 60, color: "from-amber-500 to-orange-600" },
-  { name: "Gulab Jamun", cat: "Desserts", price: 140, color: "from-amber-600 to-red-500" },
-  { name: "Kulfi", cat: "Desserts", price: 120, color: "from-pink-300 to-orange-400" },
+  { name: "Paneer Tikka", cat: "Starters", price: 320, img: imgPaneerTikka },
+  { name: "Chicken 65", cat: "Starters", price: 360, img: imgChicken65 },
+  { name: "Butter Chicken", cat: "Mains", price: 420, img: imgButterChicken },
+  { name: "Paneer Butter Masala", cat: "Mains", price: 360, img: imgPaneerButterMasala },
+  { name: "Lamb Biryani", cat: "Mains", price: 480, img: imgLambBiryani },
+  { name: "Veg Biryani", cat: "Mains", price: 280, img: imgVegBiryani },
+  { name: "Garlic Naan", cat: "Breads", price: 80, img: imgGarlicNaan },
+  { name: "Tandoori Roti", cat: "Breads", price: 40, img: imgTandooriRoti },
+  { name: "Mango Lassi", cat: "Drinks", price: 120, img: imgMangoLassi },
+  { name: "Masala Chai", cat: "Drinks", price: 60, img: imgMasalaChai },
+  { name: "Gulab Jamun", cat: "Desserts", price: 140, img: imgGulabJamun },
+  { name: "Kulfi", cat: "Desserts", price: 120, img: imgKulfi },
 ];
 
 type Line = { name: string; price: number; qty: number };
@@ -91,9 +103,18 @@ function POSPage() {
             <button
               key={i.name}
               onClick={() => add(i.name, i.price)}
-              className="text-left rounded-xl border border-border/60 bg-card hover:border-primary/40 hover:shadow-[var(--shadow-soft)] transition-all overflow-hidden"
+              className="text-left rounded-xl border border-border/60 bg-card hover:border-primary/40 hover:shadow-[var(--shadow-soft)] transition-all overflow-hidden group"
             >
-              <div className={`h-20 bg-gradient-to-br ${i.color}`} />
+              <div className="h-28 overflow-hidden bg-muted">
+                <img
+                  src={i.img}
+                  alt={i.name}
+                  loading="lazy"
+                  width={512}
+                  height={512}
+                  className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
               <div className="p-3">
                 <div className="text-sm font-medium truncate">{i.name}</div>
                 <div className="text-xs text-muted-foreground">{i.cat}</div>
